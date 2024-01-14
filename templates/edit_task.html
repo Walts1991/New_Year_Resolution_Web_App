@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="edit-page">
+        <h2>Edit Task</h2>
+        <form class="edit-form" action="{{ url_for('edit_task', task_id=task.id) }}" method="post">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" value="{{ task.description }}">
+            <label for="priority">Priority:</label>
+            <select id="priority" name="priority">
+                {% for priority in Priority %}
+                <option value="{{ priority.name }}" {{ 'selected' if task.priority == priority else '' }}>{{ priority.name|titlecase }}</option>
+                {% endfor %}
+            </select>
+            <label for="progress">Progress:</label>
+            <input type="number" id="progress" name="progress" min="0" max="100" value="{{ task.progress }}">
+            <label for="completed">Completed:</label>
+            <input type="checkbox" id="completed" name="completed" {{ task.completed and 'checked' }}>
+            <button type="submit">Save</button>
+        </form>
+        <p class="current-progress">Current progress: {{ task.progress }}%</p>
+    </div>
+    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+        {% if messages %}
+            <ul class="error-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

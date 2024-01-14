@@ -1,0 +1,106 @@
+/* General styling */
+body {
+    font-family: sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 40px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 15px;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  /* Forms */
+  input[type="text"],
+  input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Completed tasks */
+  .completed {
+    text-decoration: line-through;
+    color: #ccc;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    body {
+      margin: 20px;
+    }
+  
+    h1 {
+      font-size: 30px;
+    }
+  }
+
+  /* Edit page styling */
+.edit-page {
+    text-align: center;
+  }
+  
+  .edit-form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 0 auto; /* Center the form */
+    width: 400px; /* Adjust width as needed */
+  }
+  
+  .edit-form h2 {
+    margin-bottom: 20px;
+  }
+  
+  .edit-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .edit-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .edit-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  

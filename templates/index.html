@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Year's Resolutions Task List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>New Year's Resolutions</h1>
+    <ul>
+        {% for task in tasks %}
+        <li {% if task.completed %}class="completed"{% endif %}>
+            <form action="{{ url_for('add_task') }}" method="post">
+                <input type="hidden" name="task_id" value="{{ task.id }}">
+                <input type="hidden" name="description" value="{{ task.description }}">
+                <input type="checkbox" name="completed" {{ task.completed and 'checked' }} onchange="this.form.submit()">
+                <label for="task{{ task.id }}">{{ task.description }}</label>  <span class="progress">({{ task.progress }}% completed)</span>
+                <a href="{{ url_for('edit_task', task_id=task.id) }}">Edit</a>
+                <a href="{{ url_for('delete_task', task_id=task.id) }}">Delete</a>
+            </form>
+        </li>
+    {% endfor %}
+    
+    </ul>
+    <form action="{{ url_for('add_task') }}" method="post">
+        <input type="text" name="description" placeholder="Add a new task">
+        <button type="submit">Add</button>
+    </form>
+    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+        {% if messages %}
+            <ul class="error-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
